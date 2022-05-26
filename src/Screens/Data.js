@@ -7,7 +7,7 @@ export const Data = [
         title: 'KABAK',
         fiyat: 40,
         color: 'blue',
-        list: [100, 2000, 300]
+        list: [100, 2000, 300,500,34,36,27,89,10,2,3,4,9]
     },
     {
         id: 2,
