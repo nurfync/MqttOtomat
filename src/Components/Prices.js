@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, Image } from 'react-native'
 import MQTTConnection from '../MQTTConnection'
 import Metrics from '../StylingConstant/Metrics';
@@ -7,6 +7,7 @@ import { Buffer } from 'buffer';
 global.Buffer = Buffer;
 
 export default function Prices(props) {
+    const [clicked, setClicked] = useState(new Array(props.filterData.Lengt).fill(false))
 
     useEffect(() => {
         this.mqttConnect = new MQTTConnection()
@@ -28,7 +29,7 @@ export default function Prices(props) {
 
         onMQTTMessageArrived = (message) => {
             // console.log('App onMQTTMessageArrived: ', message);
-             console.log('App onMQTTMessageArrived payloadString: ', message.payloadString);
+            console.log('App onMQTTMessageArrived payloadString: ', message.payloadString);
         }
 
         onMQTTMessageDelivered = (message) => {
@@ -41,28 +42,38 @@ export default function Prices(props) {
 
     }, [])
 
+    onClick = (fiyat, index) => {
+        this.mqttConnect.send('politeknik', fiyat.toString())
+
+        let result = [...clicked];
+        result = result.map(x => false); // reset previous click
+        result[index] = true;
+        setClicked(result);
+
+    }
+
     return (
         <ScrollView style={styles.fiyatlar}
-        showsVerticalScrollIndicator={false}
-    >
-        {props.filterData.map((fiyat, index) => (
-            <TouchableOpacity style={styles.fiyat} key={index}
-            onPress={() => {
-                this.mqttConnect.send('politeknik', fiyat.toString())
-            }}>
+            showsVerticalScrollIndicator={false}
+        >
+            {props.filterData.map((fiyat, index) => (
+                <TouchableOpacity style={[styles.fiyat, clicked[index]? { backgroundColor: '#66ff00' }:{backgroundColor:'yellow'}]} key={index}
+                    onPress={() => onClick(fiyat, index)}>
 
-                <Text style={styles.fiyattxt}>
-                    {fiyat}
-                </Text>
-            </TouchableOpacity>
-        ))}
-    </ScrollView>
+                    <Text style={styles.fiyattxt}>
+                        {fiyat}
+                    </Text>
+                </TouchableOpacity>
+                    
+
+            ))}
+        </ScrollView>
     );
 
 }
 
 const styles = StyleSheet.create({
-    
+
     fiyatlar: {
         height: Metrics.width * 0.95,
         marginTop: Metrics.width * 0.005,
@@ -71,18 +82,17 @@ const styles = StyleSheet.create({
     },
     fiyat: {
         borderWidth: 1,
-        backgroundColor: 'yellow',
-        height: Metrics.width * 0.1,
+        height: Metrics.width * 0.09,
         width: Metrics.width * 0.13,
         marginVertical: Metrics.width * 0.01,
         borderRadius: Metrics.width * 0.02,
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf:'center'
+        alignSelf: 'center'
 
     },
     fiyattxt: {
         fontSize: Metrics.width * 0.03,
-        color:'black'
+        color: 'black'
     }
 });
