@@ -7,7 +7,7 @@ const Footer = props => {
     return (
         <View style={styles.footer}>
         <View>
-             <Text>politeknik...</Text> 
+                <Text>{props.name }</Text> 
         </View>
         <View style={{ flexDirection: 'row', }}>
             <View style={styles.imgcont}>

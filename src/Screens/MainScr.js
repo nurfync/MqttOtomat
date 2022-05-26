@@ -17,16 +17,18 @@ const numcolumn = 3;
 
 const MainScr = props => {
     const [filterData, setData] = useState([]);
+    const [name, setName] = useState('politeknik...');
 
 
     const RenderItem = ({ item }) => {
         return (
             <Card cerez={item}
                 SetList={(list) => SetList(list)}
+                SetName={(namec)=>setName(namec)}
             ></Card>
         )
     }
-  
+
     const SetList = (list) => {
         setData(list);
     }
@@ -43,17 +45,18 @@ const MainScr = props => {
                         renderItem={RenderItem}
                         numColumns={numcolumn}
                         keyExtractor={item => item.id.toString()}
-
+                        nestedScrollEnabled
                     />
                 </View>
 
                 <Prices
-                filterData={filterData}
-                
+                    filterData={filterData}
                 ></Prices>
             </View>
             <Middle></Middle>
-            <Footer></Footer>
+            <Footer
+                name={name}
+            ></Footer>
         </ScrollView>
 
     );
@@ -82,11 +85,11 @@ const styles = StyleSheet.create({
         borderRadius: Metrics.width * 0.02,
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf:'center'
+        alignSelf: 'center'
 
     },
     fiyattxt: {
         fontSize: Metrics.width * 0.03,
-        color:'black'
+        color: 'black'
     }
 });

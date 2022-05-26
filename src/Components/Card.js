@@ -46,6 +46,8 @@ export default function Card(props) {
             onPress={() => {
                 this.mqttConnect.send('politeknik', props.cerez.title)
                 props.SetList(props.cerez.list)
+                props.SetName(props.cerez.title)
+
             }}>
             <View style={[styles.top, { backgroundColor: props.cerez.color }]}>
                 <Text style={styles.text}>{props.cerez.title}</Text>
