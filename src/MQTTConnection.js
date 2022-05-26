@@ -33,7 +33,7 @@ export default class MQTTConnection {
         let currentTime = +new Date();
         let clientID = currentTime + uuid.v1();
         clientID = clientID.slice(0, 23);
-        console.log('clientID: ', clientID)
+      //  console.log('clientID: ', clientID)
 
         this.mqtt = new Paho.MQTT.Client(host, port, clientID);
         this.mqtt.onConnectionLost = (res) => {
@@ -64,7 +64,7 @@ export default class MQTTConnection {
     }
 
     subscribeChannel(channel) {
-        console.log('MQTTConnection subscribeChannel: ', channel)
+     //   console.log('MQTTConnection subscribeChannel: ', channel)
         if (!this.mqtt || !this.mqtt.isConnected()) {
             return;
         }
@@ -72,7 +72,7 @@ export default class MQTTConnection {
     }
 
     unsubscribeChannel(channel) {
-        console.log('MQTTConnection unsubscribeChannel: ', channel)
+      //  console.log('MQTTConnection unsubscribeChannel: ', channel)
         if (!this.mqtt || !this.mqtt.isConnected()) {
             return;
         }
@@ -80,7 +80,7 @@ export default class MQTTConnection {
     }
 
     send(channel = null, payload) {
-        console.log('MQTTConnection send: ')
+      //  console.log('MQTTConnection send: ')
         if (!this.mqtt || !this.mqtt.isConnected()) {
             return;
         }
@@ -88,7 +88,7 @@ export default class MQTTConnection {
         if (!channel || !payload) {
             return false;
         }
-        console.log(`MQTTConnection send publish channel: ${channel}, payload: ${payload} qos: ${this.QOS} retained: ${this.RETAIN}`)
+      //  console.log(`MQTTConnection send publish channel: ${channel}, payload: ${payload} qos: ${this.QOS} retained: ${this.RETAIN}`)
         this.mqtt.publish(channel, payload, this.QOS, this.RETAIN);
     }
 

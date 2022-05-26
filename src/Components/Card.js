@@ -28,7 +28,7 @@ export default function Card(props) {
 
         onMQTTMessageArrived = (message) => {
             // console.log('App onMQTTMessageArrived: ', message);
-            // console.log('App onMQTTMessageArrived payloadString: ', message.payloadString);
+             console.log('App onMQTTMessageArrived payloadString: ', message.payloadString);
         }
 
         onMQTTMessageDelivered = (message) => {
