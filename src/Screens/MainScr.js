@@ -9,6 +9,7 @@ import {
 import Card from '../Components/Card';
 import Footer from '../Components/Footer';
 import Middle from '../Components/Middle';
+import Prices from '../Components/Prices';
 import Metrics from '../StylingConstant/Metrics';
 import { Data } from './Data';
 
@@ -16,14 +17,12 @@ const numcolumn = 3;
 
 const MainScr = props => {
     const [filterData, setData] = useState([]);
-    const [price, setPrice] = useState(0);
 
 
     const RenderItem = ({ item }) => {
         return (
             <Card cerez={item}
                 SetList={(list) => SetList(list)}
-                price={price}
             ></Card>
         )
     }
@@ -42,25 +41,16 @@ const MainScr = props => {
                     <FlatList
                         data={Data}
                         renderItem={RenderItem}
-                        //keyExtractor={(item, index) => index}
                         numColumns={numcolumn}
                         keyExtractor={item => item.id.toString()}
 
                     />
                 </View>
-                <ScrollView style={styles.fiyatlar}
-                    showsVerticalScrollIndicator={false}
-                >
-                    {filterData.map((fiyat, index) => (
-                        <TouchableOpacity style={styles.fiyat} key={index}
-                        onPress={()=>setPrice(fiyat)}
-                        >
-                            <Text style={styles.fiyattxt}>
-                                {fiyat}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
-                </ScrollView>
+
+                <Prices
+                filterData={filterData}
+                
+                ></Prices>
             </View>
             <Middle></Middle>
             <Footer></Footer>
