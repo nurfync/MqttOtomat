@@ -58,7 +58,7 @@ const MainScr = props => {
                 >
                     {filterData.map((fiyat, index) => (
                         <TouchableOpacity style={styles.fiyat} key={index}>
-                            <Text>
+                            <Text style={styles.fiyattxt}>
                                 {fiyat}
                             </Text>
                         </TouchableOpacity>
@@ -97,5 +97,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf:'center'
 
+    },
+    fiyattxt: {
+        fontSize:Metrics.width*0.03
     }
 });
