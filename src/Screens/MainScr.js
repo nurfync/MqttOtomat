@@ -37,7 +37,7 @@ const MainScr = props => {
     return (
         <ScrollView style={styles.container}>
 
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={styles.topper}>
 
                 <View>
                     <FlatList
@@ -68,7 +68,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-
+    topper: {
+        flexDirection: 'row',
+        justifyContent: 'space-between' 
+    },
 
     fiyatlar: {
         height: Metrics.width * 0.95,
