@@ -247,7 +247,8 @@ const styles = StyleSheet.create({
     fiyatlar: {
         height: Metrics.width * 0.95,
         marginTop:Metrics.width*0.005,
-        backgroundColor: 'red',
-        width:Metrics.width*0.2
+        flex:1,
+        // width: Metrics.width * 0.1,
+        alignItems:'center'
     }
 });

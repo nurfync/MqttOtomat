@@ -7,12 +7,7 @@ import { Buffer } from 'buffer';
 global.Buffer = Buffer;
 
 export default function Card(props) {
-    constructor() 
-        this.state = {
-          tiklandi:0
-        }
-      
-    
+
     useEffect(() => {
         this.mqttConnect = new MQTTConnection()
         this.mqttConnect.onMQTTConnect = this.onMQTTConnect
@@ -51,7 +46,6 @@ export default function Card(props) {
             onPress={() => {
                 this.mqttConnect.send('politeknik', props.cerez.title)
                 props.SetID(props.cerez.id)
-                this.state.tiklandi=props.cerez.id
             }}>
             <View style={[styles.top, { backgroundColor: props.cerez.color }]}>
                 <Text style={styles.text}>{props.cerez.title}</Text>
