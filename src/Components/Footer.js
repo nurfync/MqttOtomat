@@ -1,47 +1,47 @@
 import React from 'react';
-import { Text,StyleSheet ,View,Image} from 'react-native';
+import { Text, StyleSheet, View, Image } from 'react-native';
 import Metrics from '../StylingConstant/Metrics';
 import Imgs from '../StylingConstant/Imgs';
 
 const Footer = props => {
     return (
         <View style={styles.footer}>
-        <View>
-                <Text>{props.name }</Text> 
+            <View>
+                <Text style={styles.color}>{props.name}</Text>
+            </View>
+            <View style={{ flexDirection: 'row', }}>
+                <View style={styles.imgcont}>
+                    <Image
+                        style={styles.imagebutton}
+                        source={Imgs.ayarla}
+                    />
+                </View>
+                <View style={styles.imgcont}>
+                    <Image
+                        style={styles.imagebutton}
+                        source={Imgs.ayarla}
+                    />
+                </View>
+                <View style={styles.imgcont}>
+                    <Image
+                        style={styles.imagebutton}
+                        source={Imgs.paper}
+                    />
+                </View>
+                <View style={styles.imgcont}>
+                    <Image
+                        style={styles.imagebutton}
+                        source={Imgs.dlte}
+                    />
+                </View>
+                <View style={styles.imgcont}>
+                    <Image
+                        style={styles.imagebutton}
+                        source={Imgs.exit}
+                    />
+                </View>
+            </View>
         </View>
-        <View style={{ flexDirection: 'row', }}>
-            <View style={styles.imgcont}>
-                <Image
-                    style={styles.imagebutton}
-                    source={Imgs.ayarla}
-                />
-            </View>
-            <View style={styles.imgcont}>
-                <Image
-                    style={styles.imagebutton}
-                    source={Imgs.ayarla}
-                />
-            </View>
-            <View style={styles.imgcont}>
-                <Image
-                    style={styles.imagebutton}
-                    source={Imgs.paper}
-                />
-            </View>
-            <View style={styles.imgcont}>
-                <Image
-                    style={styles.imagebutton}
-                    source={Imgs.dlte}
-                />
-            </View>
-            <View style={styles.imgcont}>
-                <Image
-                    style={styles.imagebutton}
-                    source={Imgs.exit}
-                />
-            </View>
-        </View>
-    </View>
     );
 };
 
@@ -72,4 +72,7 @@ const styles = StyleSheet.create({
         width: Metrics.width * 0.06,
         height: Metrics.width * 0.06,
     },
+    text: {
+        color: 'black'
+    }
 });
