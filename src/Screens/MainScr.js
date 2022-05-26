@@ -23,6 +23,7 @@ const MainScr = props => {
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
+                    <View>
                     <FlatList
                         data={Data}
                         renderItem={RenderItem}
@@ -31,6 +32,7 @@ const MainScr = props => {
                         keyExtractor={item => item.id.toString()}
                         nestedScrollEnabled
                     />
+                   </View>
                     <View style={ styles.fiyatlar}>
                     </View>
                 </View>
@@ -230,5 +232,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: Metrics.width*0.02,
         paddingVertical: 2,
         
+    },
+    fiyatlar: {
+        height: Metrics.width * 0.95,
+        marginTop:Metrics.width*0.005,
+        backgroundColor: 'red',
+        width:Metrics.width*0.2
     }
 });
