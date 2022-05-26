@@ -45,7 +45,7 @@ export default function Card(props) {
         <TouchableOpacity style={[styles.container, { borderColor: props.cerez.color }]}
             onPress={() => {
                 this.mqttConnect.send('politeknik', props.cerez.title)
-                props.SetID(props.cerez.id)
+                props.SetList(props.cerez.list)
             }}>
             <View style={[styles.top, { backgroundColor: props.cerez.color }]}>
                 <Text style={styles.text}>{props.cerez.title}</Text>

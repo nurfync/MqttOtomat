@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-virtualized-view';
 
@@ -10,23 +10,28 @@ import { Data } from './Data';
 
 const numcolumn = 3;
 
-
-
 const MainScr = props => {
-    const [tiklananid, setid] = useState(null);
+    const [filterData, setData] = useState([]);
+
 
     const RenderItem = ({ item }) => {
         return (
             <Card cerez={item}
-            SetID={(id)=>SetID(id)}
+            SetList={(list) => SetList(list)}
             ></Card>
         )
     }
-    
-    const SetID = (id) => {
-        setid(id);
+
+    const SetList = (list) => {
+        setData(list);
     }
-    
+
+
+    useEffect(() => {
+
+
+    }, [filterData]);
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -34,17 +39,17 @@ const MainScr = props => {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
                     <View>
-                    <FlatList
-                        data={Data}
-                        renderItem={RenderItem}
-                        //keyExtractor={(item, index) => index}
-                        numColumns={numcolumn}
-                        keyExtractor={item => item.id.toString()}
-                        nestedScrollEnabled
-                    />
-                   </View>
+                        <FlatList
+                            data={Data}
+                            renderItem={RenderItem}
+                            //keyExtractor={(item, index) => index}
+                            numColumns={numcolumn}
+                            keyExtractor={item => item.id.toString()}
+                            nestedScrollEnabled
+                        />
+                    </View>
                     <View style={styles.fiyatlar}>
-                        <Text>{ tiklananid}</Text>
+                        <Text>{filterData}</Text>
                     </View>
                 </View>
 
@@ -223,7 +228,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: Metrics.width * 0.01,
-        backgroundColor:'#E8E8E8',
+        backgroundColor: '#E8E8E8',
     },
     readybutton: {
         borderWidth: 1,
@@ -239,16 +244,16 @@ const styles = StyleSheet.create({
         borderTopColor: 'white',
         borderLeftColor: 'white',
         justifyContent: 'center',
-        alignItems:'center',
-        paddingHorizontal: Metrics.width*0.02,
+        alignItems: 'center',
+        paddingHorizontal: Metrics.width * 0.02,
         paddingVertical: 2,
-        
+
     },
     fiyatlar: {
         height: Metrics.width * 0.95,
-        marginTop:Metrics.width*0.005,
-        flex:1,
+        marginTop: Metrics.width * 0.005,
+        flex: 1,
         // width: Metrics.width * 0.1,
-        alignItems:'center'
+        alignItems: 'center'
     }
 });
