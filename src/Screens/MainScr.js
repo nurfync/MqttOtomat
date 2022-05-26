@@ -16,23 +16,18 @@ const numcolumn = 3;
 
 const MainScr = props => {
     const [filterData, setData] = useState([]);
+    const [price, setPrice] = useState(0);
 
 
     const RenderItem = ({ item }) => {
         return (
             <Card cerez={item}
                 SetList={(list) => SetList(list)}
+                price={price}
             ></Card>
         )
     }
-    const RenderCostItem = () => {
-        return (
-            <Card cerez={item}
-                SetList={(list) => SetList(list)}
-            ></Card>
-        )
-    }
-
+  
     const SetList = (list) => {
         setData(list);
     }
@@ -54,10 +49,12 @@ const MainScr = props => {
                     />
                 </View>
                 <ScrollView style={styles.fiyatlar}
-                    nestedScrollEnabled
+                    showsVerticalScrollIndicator={false}
                 >
                     {filterData.map((fiyat, index) => (
-                        <TouchableOpacity style={styles.fiyat} key={index}>
+                        <TouchableOpacity style={styles.fiyat} key={index}
+                        onPress={()=>setPrice(fiyat)}
+                        >
                             <Text style={styles.fiyattxt}>
                                 {fiyat}
                             </Text>
@@ -99,6 +96,7 @@ const styles = StyleSheet.create({
 
     },
     fiyattxt: {
-        fontSize:Metrics.width*0.03
+        fontSize: Metrics.width * 0.03,
+        color:'black'
     }
 });
