@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState} from 'react';
 import { Text, View, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-virtualized-view';
+
 
 import Card from '../Components/Card';
 import Imgs from '../StylingConstant/Imgs';
@@ -9,14 +10,23 @@ import { Data } from './Data';
 
 const numcolumn = 3;
 
-const RenderItem = ({ item }) => {
-    return (
-        <Card cerez={item} ></Card>
-    )
-}
 
 
 const MainScr = props => {
+    const [tiklananid, setid] = useState(null);
+
+    const RenderItem = ({ item }) => {
+        return (
+            <Card cerez={item}
+            SetID={(id)=>SetID(id)}
+            ></Card>
+        )
+    }
+    
+    const SetID = (id) => {
+        setid(id);
+    }
+    
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -33,7 +43,8 @@ const MainScr = props => {
                         nestedScrollEnabled
                     />
                    </View>
-                    <View style={ styles.fiyatlar}>
+                    <View style={styles.fiyatlar}>
+                        <Text>{ tiklananid}</Text>
                     </View>
                 </View>
 
