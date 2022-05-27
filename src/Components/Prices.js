@@ -51,7 +51,7 @@ export default function Prices(props) {
         setClicked(result);
 
     }
-    onClick = (index) => {
+    onClick = (fiyat, index) => {
 
         let result = [...clicked];
         result = result.map(x => false); // reset previous click
@@ -60,7 +60,7 @@ export default function Prices(props) {
 
     }
     useEffect(() => {
-        onClick(0,90);
+        onClick(0, 90);
     }, [props.indexdegeri]);
 
     return (
@@ -70,7 +70,7 @@ export default function Prices(props) {
             {props.filterData.map((fiyat, index) => (
                 <TouchableOpacity style={[styles.fiyat, clicked[index] ? { backgroundColor: '#66ff00' } : { backgroundColor: 'yellow' }]} key={index}
                     onPress={() => {
-                        onClick(index)
+                        onClick(fiyat, index)
                         this.mqttConnect.send('politeknik', fiyat.toString())
                     }
                     }>
