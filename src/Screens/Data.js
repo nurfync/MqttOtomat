@@ -7,7 +7,7 @@ export const Data = [
         title: 'KABAK',
         fiyat: 40,
         color: 'blue',
-        list: [100, 2000, 300,500,34,36,27,89,10,2,3,4,9]
+        list: [23,12,25,45,78,55,34,36,27,89,10,2,3,4,9]
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ export const Data = [
         title: 'FINDIK',
         fiyat: 90,
         color: 'blue',
-        list: [100, 2000, 300, 234]
+        list: [100, 20, 30, 40]
 
 
     },
@@ -35,7 +35,7 @@ export const Data = [
         title: 'FISTIK',
         fiyat: 45,
         color: 'red',
-        list: [100, 202, 300]
+        list: [50, 60, 70,80,90,100]
 
 
     },
@@ -45,7 +45,7 @@ export const Data = [
         title: 'BADEM',
         fiyat: 95,
         color: 'red',
-        list: [100, 2000, 300]
+        list: [5, 10, 15,20,25,30,35,40,45]
 
 
     },
@@ -55,7 +55,7 @@ export const Data = [
         title: 'ANTEP',
         fiyat: 110,
         color: 'red',
-        list: [100, 2000, 300]
+        list: [2, 4, 6,8,10,12,14,16,18,20]
 
 
     },
@@ -65,7 +65,7 @@ export const Data = [
         title: 'LEBLEBI',
         fiyat: 50,
         color: 'blue',
-        list: [100, 2000, 300]
+        list: [100, 200, 300,400,500,600,700,800,900]
 
 
     },
@@ -75,7 +75,7 @@ export const Data = [
         title: 'CEVIZ',
         fiyat: 80,
         color: 'blue',
-        list: [100, 2000, 300]
+        list: [5, 10, 15,20,35,45]
 
 
     },
