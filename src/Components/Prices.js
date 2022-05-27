@@ -51,20 +51,35 @@ export default function Prices(props) {
         setClicked(result);
 
     }
+    onClick = (fiyat, index) => {
+
+        let result = [...clicked];
+        result = result.map(x => false); // reset previous click
+        result[index] = true;
+        setClicked(result);
+
+    }
+    useEffect(() => {
+        onClick(0,90);
+    }, [props.indexdegeri]);
 
     return (
         <ScrollView style={styles.fiyatlar}
             showsVerticalScrollIndicator={false}
         >
             {props.filterData.map((fiyat, index) => (
-                <TouchableOpacity style={[styles.fiyat, clicked[index]? { backgroundColor: '#66ff00' }:{backgroundColor:'yellow'}]} key={index}
-                    onPress={() => onClick(fiyat, index)}>
+                <TouchableOpacity style={[styles.fiyat, clicked[index] ? { backgroundColor: '#66ff00' } : { backgroundColor: 'yellow' }]} key={index}
+                    onPress={() => {
+                        onClick(fiyat, index)
+                        this.mqttConnect.send('politeknik', fiyat.toString())
+                    }
+                    }>
 
                     <Text style={styles.fiyattxt}>
                         {fiyat}
                     </Text>
                 </TouchableOpacity>
-                    
+
 
             ))}
         </ScrollView>

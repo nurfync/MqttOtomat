@@ -51,6 +51,7 @@ const MainScr = props => {
 
                 <Prices
                     filterData={filterData}
+                    indexdegeri={name}
                 ></Prices>
             </View>
             <Middle></Middle>
